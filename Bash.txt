@@ -1,0 +1,27 @@
+# Open the Terminal on your Mac.
+
+# Navigate to the folder where your zip files are located by typing the cd command:
+
+cd /path/to/your/zip/files
+
+# Create the destination folders if they don't exist
+mkdir -p SS NI II
+
+# Move files based on the presence of SS, NI, or II in the filename
+for file in *.zip; do
+    if [[ "$file" == *"-SS-"* ]]; then
+        mv "$file" SS/
+    elif [[ "$file" == *"-NI-"* ]]; then
+        mv "$file" NI/
+    elif [[ "$file" == *"-II-"* ]]; then
+        mv "$file" II/
+    fi
+done
+
+echo "Files have been moved to the appropriate folders."
+
+# Explanation:
+# The mkdir -p SS NI II command creates folders (SS, NI, and II) if they don't exist.
+# The for file in *.zip command loops through all .zip files in the current directory.
+# The if statements check if the filename contains -SS-, -NI-, or -II- and move the file to the corresponding folder using mv.
+# Once you run these commands, check if your zip files have been moved to their respective folders (SS, NI, or II). Let me know if you encounter any other issues!
